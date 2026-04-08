@@ -216,3 +216,34 @@ cp target/microgrid.war $CATALINA_HOME/webapps/ROOT.war
 | `/maintenance/delete`    | POST     | Delete maintenance event |
 | `/reports`               | GET      | Reports & analytics      |
 | `/export/{entity}/csv`   | GET      | CSV export               |
+
+## API & Testing (CURL)
+
+To insert dummy values via the command line, follow this two-step process:
+
+### 1. Login to get a Session Cookie
+```bash
+curl -c cookies.txt -d "username=admin&password=admin123" http://localhost:8080/login
+```
+
+### 2. Enter Dummy Values
+Use the `cookies.txt` generated above to bypass the authentication filter.
+
+**Enter a new Sensor Reading:**
+```bash
+curl -b cookies.txt -d "sensor_id=1&reading_value=25.5&reading_timestamp=2026-04-08T10:00" \
+     http://localhost:8080/readings/create
+```
+
+**Add a new Technician:**
+```bash
+curl -b cookies.txt -d "name=Test+Technician&contact_no=9998887776&specialization=Humidity" \
+     http://localhost:8080/technicians/create
+```
+
+**Add a new Sensor:**
+```bash
+curl -b cookies.txt -d "model=SENTINEL-X&install_date=2026-04-08&status=ACTIVE&type_id=1&location_id=1" \
+     http://localhost:8080/sensors/create
+```
+
