@@ -69,11 +69,7 @@
                                                     <i class="bi bi-tools"></i> Maintenance
                                                 </a>
                                             </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="${pageContext.request.contextPath}/reports">
-                                                    <i class="bi bi-bar-chart"></i> Reports
-                                                </a>
-                                            </li>
+
                                         </ul>
                                         <ul class="navbar-nav">
                                             <li class="nav-item dropdown">
