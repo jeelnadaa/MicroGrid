@@ -3,7 +3,7 @@ package com.microgrid.dao;
 /**
  * This file manages JDBC database connection creation and configuration.
  * It centralizes the creation of Connection objects and keeps database
- * access details in one responsible place, following GRASP Controller
+ * access details in one responsible place, following GRASP Pure Fabrication
  * and Single Responsibility from SOLID. The static initialization is a
  * simple creational style that prevents other classes from duplicating
  * connection setup logic.
@@ -42,7 +42,7 @@ public class DatabaseConnection {
             String port = env("DB_PORT", props.getProperty("db.port", "3306"));
             String dbName = env("DB_NAME", props.getProperty("db.name", "microclimate_grid"));
             URL = "jdbc:mysql://" + host + ":" + port + "/" + dbName +
-                  "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+                    "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
             USER = env("DB_USER", props.getProperty("db.user", "root"));
             PASSWORD = env("DB_PASSWORD", props.getProperty("db.password", ""));
         } catch (Exception e) {
@@ -56,7 +56,8 @@ public class DatabaseConnection {
         return (val != null && !val.isEmpty()) ? val : fallback;
     }
 
-    private DatabaseConnection() {} // Prevent instantiation
+    private DatabaseConnection() {
+    } // Prevent instantiation
 
     /**
      * Get a new database connection.

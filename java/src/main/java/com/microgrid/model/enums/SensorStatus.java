@@ -3,7 +3,7 @@ package com.microgrid.model.enums;
 /**
  * Enum for sensor statuses.
  * It follows SOLID single responsibility by representing only status values.
- * The enum is also a creational convenience, providing a fixed set of instances.
+ * The enum is also inherently implements the Singleton creational pattern to provide a fixed set of instances.", providing a fixed set of instances.
  */
 
 /**
@@ -26,7 +26,8 @@ public enum SensorStatus {
     }
 
     public static SensorStatus fromString(String text) {
-        if (text == null) return null;
+        if (text == null)
+            return null;
         for (SensorStatus status : SensorStatus.values()) {
             if (status.value.equalsIgnoreCase(text)) {
                 return status;
